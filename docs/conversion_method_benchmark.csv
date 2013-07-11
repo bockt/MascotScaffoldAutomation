@@ -1,0 +1,11 @@
+### protein thr; 95% prob, peptide thrs; FDR 0.01,,
+method,time,prot_ids,psms
+extract_msn,53,1404,10435
+orbitrap_high_res_MS2,13980,1471,12540
+orbitrap_low_res_MS2_1,7680,1485,12795
+orbitrap_low_res_MS2_2,5280,1481,12764
+orbitrap_low_res_MS2_3,5880,1414,10460
+orbitrap_low_res_MS2_4,615,1487,12575
+extract_msn_network_drive,158,1404,10435
+MM_data_conversion,NA,1566,14331
+orbitrap_low_res_MS2_test,,,

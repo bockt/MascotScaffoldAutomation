@@ -1,0 +1,12 @@
+Mascot Daemon:
+	External Processes
+		After each seach
+			- Create Mascot Dat File Queue (queue file in tmp folder. File name given by task name (spaces replaced by _))
+		After Completing Task
+			- Read .dat file queue
+			- Download all .dat files
+			- Parse one .dat file and extract .fasta file path
+			- Download .fasta file
+			- Create Scaffold .xml driver
+			- run scaffold		
+

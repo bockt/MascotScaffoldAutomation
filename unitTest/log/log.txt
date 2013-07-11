@@ -1,0 +1,4 @@
+Tue Jul  9 15:22:50 2013	INFO	.DAT File Download sessionID &sessionID=Erik_2415867376122584	test_Task	
+Tue Jul  9 15:23:07 2013	ERROR	Failed to run Scaffold Batch, "C:\Program Files\Scaffold4\ScaffoldBatch4.exe" -f "C:\dev\perl\workspace\MascotScaffoldAutomation\unitTest\tmp\driver.xml" >"C:\dev\perl\workspace\MascotScaffoldAutomation\unitTest\log\scaffoldProgressLog.txt" 2>"C:\dev\perl\workspace\MascotScaffoldAutomation\unitTest\log\scaffoldErrorLog.txt"	test_Task	
+Tue Jul  9 15:26:06 2013	INFO	.DAT File Download sessionID &sessionID=Erik_2854445106925335	test_Task	
+Tue Jul  9 16:44:07 2013	INFO	.DAT File Download sessionID &sessionID=Erik_79796712767704	test_Task	

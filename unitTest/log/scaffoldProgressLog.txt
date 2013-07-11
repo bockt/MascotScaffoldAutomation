@@ -1,0 +1,739 @@
+[15:26:21] Allowable biological sample converter children: FastaDatabaseConverter
+[15:26:21] Allowable biological sample converter children: TandemMassSpectrometrySampleConverter
+[15:26:21] Allowable biological sample converter children: ModificationConverter
+[15:26:21] Allowable biological sample converter children: InputFileConverter
+[15:26:21] Allowable biological sample converter children: b
+[15:26:21] C:\ProgramData\Proteome Software\Scaffold4\registeredKey.lkeynew
+[15:26:21] normal license dialog check
+[15:26:22] Reading driver file "driver.xml".
+[15:26:22] Successfully acquired lock on swap directory C:\Users\PCF-AD~1\AppData\Local\Temp\scaffold_temp_storage\temp_451509673851020
+#Initializing user space
+%0.02%
+#Creating data manager
+[15:26:22] Initializing Data Store Manager using C:\Users\PCF-AD~1\AppData\Local\Temp\scaffold_temp_storage\temp_451509673851020
+[15:26:22] Initializing data store with C:\Users\PCF-AD~1\AppData\Local\Temp\scaffold_temp_storage\temp_451509673851020\h.sqlite
+[15:26:22] Committing h.sqlite
+[15:26:22] Registering data store h
+#building Experiment object model
+#building SpectrumCollation object model
+#building Spectrum object model
+#building PeakList object model
+#building Spectrum Identification object model
+#building Spectrum Group object model
+%0.12%
+#building Spectrum Group Holder object model
+#building Database Search object model
+#building Peptide Identification object model
+#building Peptide Group object model
+#building Peptide Group Holder object model
+#building Modification object model
+#building Node Connection object model
+%0.22%
+#building Protein Identification object model
+#building Protein Sequence object model
+#building Spectrum Identification Cache object model
+#building ProteinIdentification Cache object model
+#building ProteinGroup object model
+#building P2PMap object model
+%0.33%
+#building IdentityE object model
+#adding associations
+%0.66%
+#Creating index for ProteinGroup
+#0 of 0
+%0.99%
+# 
+%2.0%
+[15:26:22] Loading UNIMOD from C:\Program Files\Scaffold4\parameters\unimod.xml
+[15:26:22] Found unimod.xml version 2.
+[15:26:23] Using Version 2.0 of saved parsers list.
+Indexing FASTA database file...
+[-                                                               ] 0.0 %Connecting to index...
+[\                                                               ] 0.0 %...acquired connection!
+Begin writing to index...
+[-|                                                              ] 1.9 %Indexing protein #1000                                                         
+[---/                                                            ] 4.8 %Indexing protein #2000                                                         
+[------                                                          ] 7.4 %Indexing protein #3000                                                         
+[-------\                                                        ] 10.4 %Indexing protein #4000                                                         
+[---------|                                                      ] 14.0 %Indexing protein #5000                                                         
+[-----------/                                                    ] 17.1 %Indexing protein #6000                                                         
+Indexing protein #7000                                                         
+[--------------                                                  ] 21.0 %Indexing protein #8000                                                         
+[----------------\                                               ] 25.3 %Indexing protein #9000                                                         
+[------------------|                                             ] 29.2 %Indexing protein #10000                                                        
+Indexing protein #11000                                                        
+[---------------------/                                          ] 33.5 %Indexing protein #12000                                                        
+[------------------------                                        ] 37.0 %Indexing protein #13000                                                        
+[--------------------------\                                     ] 40.9 %Indexing protein #14000                                                        
+Indexing protein #15000                                                        
+[----------------------------|                                   ] 45.0 %Indexing protein #16000                                                        
+[-------------------------------/                                ] 48.9 %Indexing protein #17000                                                        
+[----------------------------------                              ] 52.6 %Indexing protein #18000                                                        
+Indexing protein #19000                                                        
+[------------------------------------\                           ] 56.7 %Indexing protein #20000                                                        
+[--------------------------------------|                         ] 60.3 %Indexing protein #21000                                                        
+[-----------------------------------------/                      ] 64.6 %Indexing protein #22000                                                        
+Indexing protein #23000                                                        
+[--------------------------------------------                    ] 68.7 %Indexing protein #24000                                                        
+[----------------------------------------------\                 ] 72.5 %Indexing protein #25000                                                        
+[------------------------------------------------|               ] 76.6 %Indexing protein #26000                                                        
+[---------------------------------------------------/            ] 80.3 %Indexing protein #27000                                                        
+Indexing protein #28000                                                        
+[------------------------------------------------------          ] 84.5 %Indexing protein #29000                                                        
+[--------------------------------------------------------\       ] 88.3 %Indexing protein #30000                                                        
+[----------------------------------------------------------|     ] 92.4 %Indexing protein #31000                                                        
+Indexing protein #32000                                                        
+[-------------------------------------------------------------/  ] 96.5 %Successfully created FASTA index file.
+Indexing took 3042 ms
+Indexing protein #33000                                                        
+[----------------------------------------------------------------] 99.9 %After indexing FASTA database, a duplicate FASTA index file was found and deleted.
+                                                                               
+Indexed 33364 proteins                                                         
+[---------------------------------------------------------------\] 100.0 %                                                                               
+Finished!                                                                      
+[---------------------------------------------------------------|] 100.0 %Added test_Task FASTA Database to database list.
+class com.proteomesoftware.scaffold.filereaders.SpectrumMillReader --> Spectrum Mill
+class com.proteomesoftware.scaffold.filereaders.SequestOUTReader --> Sequest
+class com.proteomesoftware.scaffold.filereaders.discoverer.MSFMultiplexQuantReader --> Discoverer_sf
+class com.proteomesoftware.scaffold.filereaders.MSFFile --> Discoverer_sf
+class com.proteomesoftware.scaffold.filereaders.MascotDATReader --> Mascot
+class com.proteomesoftware.scaffold.filereaders.TandemXMLReader --> X! Tandem
+class com.proteomesoftware.scaffold.filereaders.PhenyxXMLReader --> Phenyx
+class com.proteomesoftware.scaffold.filereaders.OmssaXMLReader --> OMSSA
+class com.proteomesoftware.scaffold.filereaders.ProteinLynxExportReader --> IdentityE
+class com.proteomesoftware.scaffold.filereaders.maxquant.MaxQuantReader --> MaxQuant
+class com.proteomesoftware.scaffold.filereaders.mascot.distiller.DistillerQuantXMLReader --> Mascot Distiller
+class com.proteomesoftware.scaffold.filereaders.mzidentml.MzIdentMLReader --> MzIdentML
+#Saving backup...
+#Flushing write caches
+%2.0%
+#Flushing Spectrum Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Protein Experiment Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Tandem Mass Spectrometry Sample file
+Flushed ProteinGroup in 15.0ms of which 0.0ms spent writing and 15.0ms was spent compressing.
+#Flushing Protein Group file
+#Flushing Peptide Identification file
+Flushed BBSequenceMatch in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Sequence Match file
+#Flushing Peptide Overflow file
+#Flushing Spectrum Identification Cache file
+#Flushing High Energy Peak List File file
+#Flushing Spectrum file
+Flushed SpectrumCollation in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing Spectrum Collation file
+#Flushing com.proteomesoftware.scaffold.datamodel. Search Engine Scoring Scheme file
+#Flushing Peptide Group file
+Flushed P2PMap in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing P2 P Map file
+#Flushing Peptides That Identify Proteins file
+#Flushing Protein Identification file
+#Flushing Database Search file
+#Flushing com.proteomesoftware.scaffold.datamodel. Storable Database Search Parameters file
+#Flushing Identification Cache Lookup file
+#Flushing Modification Locations file
+Flushed BBLowEnergyPeaks in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Low Energy Peaks file
+#Flushing Spectrum Analysis file
+Flushed BBPep3DPeakList in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Pep3 D Peak List file
+#Flushing Peak List file
+#Flushing Protein Node Connections file
+#Flushing Modification Type Ids file
+#Flushing Peptide Identification file
+#Flushing Peak List Mass Intensities file
+#Flushing Storable Protein Name file
+#Flushing Spectrum Name file
+#Flushing Protein Lynx Annotated Ions file
+#Flushing com.proteomesoftware.scaffold.datamodel. Input File Set file
+#Flushing Storable Accession Number file
+#Flushing com.proteomesoftware.scaffold.datamodel. Biological Sample file
+#Flushing Protein Analysis I Ds file
+Flushed BBProteinSequence in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Protein Sequence file
+#Flushing Peptide Sequence file
+#Flushing Modification Types file
+#Flushing Spectrum Analysis file
+#Flushing Experiment file
+#Flushing overflow caches
+#Flushing extra Spectrum Group file
+#Flushing extra Peptide Overflow file
+#Flushing extra Peptide Group file
+#Flushing extra Peptides That Identify Proteins file
+#Flushing extra Modification Locations file
+#Flushing extra Protein Node Connections file
+#Flushing extra Modification Type Ids file
+#Flushing extra Peak List Mass Intensities file
+#Flushing extra Storable Protein Name file
+#Flushing extra Spectrum Name file
+#Flushing extra Storable Accession Number file
+#Flushing extra Protein Analysis I Ds file
+#Flushing extra Peptide Sequence file
+#Writing...
+%2.1%
+%2.21%
+%2.31%
+%2.42%
+%2.52%
+%2.63%
+%2.74%
+#
+#fileB.mgf_1
+#Loading: exp1 (F015101)
+%2.89%
+%3.0%
+%3.1%
+%3.25%
+%3.36%
+%3.47%
+%3.58%
+%3.75%
+%3.88%
+%4.06%
+%4.23%
+%4.41%
+%4.58%
+%4.75%
+%4.92%
+%5.09%
+%5.26%
+%5.4%
+%5.5%
+%5.61%
+%5.72%
+%5.85%
+%5.99%
+%6.1%
+%6.21%
+%6.34%
+%6.44%
+%6.59%
+%6.76%
+%6.86%
+%6.97%
+%7.08%
+%7.2%
+%7.31%
+%7.42%
+%7.55%
+%7.65%
+%7.76%
+%7.87%
+%7.98%
+%8.11%
+%8.21%
+%8.37%
+%8.48%
+%8.58%
+%8.68%
+%8.81%
+%8.94%
+%9.04%
+%9.16%
+%9.3%
+%9.44%
+%9.58%
+%9.72%
+%9.86%
+%10.03%
+%10.17%
+%10.31%
+%10.45%
+%10.59%
+%10.73%
+%10.87%
+%11.01%
+%11.17%
+%11.31%
+%11.45%
+%11.59%
+%11.73%
+%11.87%
+%12.01%
+%12.15%
+%12.29%
+%12.39%
+%12.53%
+%12.64%
+%12.74%
+%12.84%
+%12.96%
+%16.29%
+%16.4%
+%19.28%
+%19.39%
+%22.4%
+%22.51%
+%23.5%
+%23.6%
+%25.47%
+%25.58%
+%27.45%
+%27.55%
+%29.42%
+%29.53%
+%31.4%
+%31.5%
+%33.37%
+%33.48%
+%34.35%
+%34.45%
+#Adding Spectrum #10
+%35.2%
+#Collating Spectra
+#Organizing Previous Spectra
+# 
+# 
+#Collating Spectra
+# 
+# 
+# 
+# 
+# 
+# 
+%38.8%
+#fileB.mgf_1
+#Data imported successfully
+#fileB.mgf_1
+#exp1 (F015101)
+#calculating peptide probabilities
+#                                 
+%38.9%
+#merging peptide identifications
+#                                 
+#creating peptide data structures
+%39.01%
+#calculating protein probabilities
+#                                 
+#creating peptide data structures
+#running EM
+#running EM iteration 1
+#running EM iteration 2
+#running EM iteration 3
+#running EM iteration 4
+#running EM iteration 5
+#running EM iteration 6
+#running EM iteration 7
+#running EM iteration 8
+#running EM iteration 9
+#running EM iteration 10
+#modifying peptide weights to reflect EM results
+#modifying protein probabilities to reflect EM results
+#regrouping proteins
+%39.11%
+%40.85%
+#Saving backup...
+#Flushing write caches
+#Flushing Spectrum Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Protein Experiment Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Tandem Mass Spectrometry Sample file
+Flushed ProteinGroup in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing Protein Group file
+#Flushing Peptide Identification file
+Flushed BBSequenceMatch in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Sequence Match file
+#Flushing Peptide Overflow file
+#Flushing Spectrum Identification Cache file
+#Flushing High Energy Peak List File file
+#Flushing Spectrum file
+Flushed SpectrumCollation in 78.0ms of which 78.0ms spent writing and 0.0ms was spent compressing.
+#Flushing Spectrum Collation file
+#Flushing com.proteomesoftware.scaffold.datamodel. Search Engine Scoring Scheme file
+#Flushing Peptide Group file
+Flushed P2PMap in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing P2 P Map file
+#Flushing Peptides That Identify Proteins file
+#Flushing Protein Identification file
+#Flushing Database Search file
+#Flushing com.proteomesoftware.scaffold.datamodel. Storable Database Search Parameters file
+#Flushing Identification Cache Lookup file
+#Flushing Modification Locations file
+Flushed BBLowEnergyPeaks in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Low Energy Peaks file
+#Flushing Spectrum Analysis file
+Flushed BBPep3DPeakList in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Pep3 D Peak List file
+#Flushing Peak List file
+#Flushing Protein Node Connections file
+#Flushing Modification Type Ids file
+#Flushing Peptide Identification file
+#Flushing Peak List Mass Intensities file
+#Flushing Storable Protein Name file
+#Flushing Spectrum Name file
+#Flushing Protein Lynx Annotated Ions file
+#Flushing com.proteomesoftware.scaffold.datamodel. Input File Set file
+#Flushing Storable Accession Number file
+#Flushing com.proteomesoftware.scaffold.datamodel. Biological Sample file
+#Flushing Protein Analysis I Ds file
+Flushed BBProteinSequence in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Protein Sequence file
+#Flushing Peptide Sequence file
+#Flushing Modification Types file
+#Flushing Spectrum Analysis file
+#Flushing Experiment file
+#Flushing overflow caches
+#Flushing extra Spectrum Group file
+#Flushing extra Peptide Overflow file
+#Flushing extra Peptide Group file
+#Flushing extra Peptides That Identify Proteins file
+#Flushing extra Modification Locations file
+#Flushing extra Protein Node Connections file
+#Flushing extra Modification Type Ids file
+#Flushing extra Peak List Mass Intensities file
+#Flushing extra Storable Protein Name file
+#Flushing extra Spectrum Name file
+#Flushing extra Storable Accession Number file
+#Flushing extra Protein Analysis I Ds file
+#Flushing extra Peptide Sequence file
+#Writing...
+%40.96%
+%41.07%
+%41.19%
+%41.3%
+%41.42%
+%41.53%
+#
+%41.66%
+#fileA.mgf_2
+#Loading: exp1 (F015100)
+%41.79%
+%41.9%
+%42.0%
+%42.1%
+%42.21%
+%42.32%
+%42.43%
+%42.6%
+%42.74%
+%42.92%
+%43.1%
+%43.27%
+%43.44%
+%43.61%
+%43.79%
+%43.96%
+%44.14%
+%44.27%
+%44.38%
+%44.49%
+%44.6%
+%44.73%
+%44.87%
+%44.98%
+%45.09%
+%45.22%
+%45.33%
+%45.48%
+%45.64%
+%45.75%
+%45.86%
+%45.97%
+%46.09%
+%46.2%
+%46.32%
+%46.42%
+%46.53%
+%46.65%
+%46.77%
+%46.88%
+%47.01%
+%47.12%
+%47.28%
+%47.38%
+%47.48%
+%47.59%
+%47.7%
+%47.8%
+%47.9%
+%48.01%
+%48.12%
+%48.28%
+%48.42%
+%48.56%
+%48.7%
+%48.85%
+%48.95%
+%49.09%
+%49.23%
+%49.37%
+%49.51%
+%49.66%
+%49.8%
+%49.94%
+%50.11%
+%50.25%
+%50.39%
+%50.53%
+%50.67%
+%50.81%
+%50.95%
+%51.09%
+%51.23%
+%51.34%
+%51.48%
+%51.58%
+%51.69%
+%51.79%
+%51.91%
+%55.28%
+%55.38%
+%58.3%
+%58.41%
+%61.45%
+%61.56%
+%62.56%
+%62.67%
+%64.56%
+%64.66%
+%66.55%
+%66.66%
+%68.55%
+%68.65%
+%70.54%
+%70.65%
+%72.54%
+%72.64%
+%73.53%
+#Adding Spectrum #10
+%74.05%
+#Collating Spectra
+#Organizing Previous Spectra
+# 
+# 
+#Collating Spectra
+# 
+# 
+# 
+# 
+# 
+# 
+%77.65%
+#fileA.mgf_2
+#Data imported successfully
+#fileA.mgf_2
+#exp1 (F015100)
+#calculating peptide probabilities
+#                                 
+%77.75%
+#merging peptide identifications
+#                                 
+#creating peptide data structures
+%77.85%
+#calculating protein probabilities
+#                                 
+#creating peptide data structures
+#running EM
+#running EM iteration 1
+#running EM iteration 2
+#running EM iteration 3
+#running EM iteration 4
+#running EM iteration 5
+#running EM iteration 6
+#running EM iteration 7
+#running EM iteration 8
+#running EM iteration 9
+#running EM iteration 10
+#modifying peptide weights to reflect EM results
+#modifying protein probabilities to reflect EM results
+#regrouping proteins
+%77.95%
+%79.69%
+%83.78%
+#Data loaded, cleaning up
+#Looking up protein sequences...
+#                               
+#1/33364
+#680/33364
+%83.9%
+#2821/33364
+%84.01%
+#5643/33364
+%84.12%
+#8259/33364
+%84.23%
+#10957/33364
+%84.37%
+#14133/33364
+%84.48%
+#16788/33364
+%84.6%
+#19889/33364
+%84.71%
+#22465/33364
+%84.83%
+#25331/33364
+%84.94%
+#28037/33364
+%85.05%
+#30543/33364
+%85.16%
+#Retrieving 0 proteins
+%86.54%
+#Linking proteins to annotations...
+#
+#Regrouping proteins across experiment
+#Grouping Proteins Across Experiment: Experiment-Wide Grouping Strategy
+#Adding exp1 (F015101) to model
+#Adding spectrum #0
+#Adding exp1 (F015100) to model
+#Adding spectrum #0
+#
+#
+#Sorting proteins by peptide evidence
+#Adjusting protein statistics
+#Assigning proteins to clusters
+#Finding preferred protein names
+#Saving data to disk
+#Flushing write caches
+#Flushing Spectrum Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Protein Experiment Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Tandem Mass Spectrometry Sample file
+Flushed ProteinGroup in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing Protein Group file
+#Flushing Peptide Identification file
+Flushed BBSequenceMatch in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Sequence Match file
+#Flushing Peptide Overflow file
+#Flushing Spectrum Identification Cache file
+%86.64%
+#Flushing High Energy Peak List File file
+#Flushing Spectrum file
+Flushed SpectrumCollation in 109.0ms of which 78.0ms spent writing and 31.0ms was spent compressing.
+#Flushing Spectrum Collation file
+#Flushing com.proteomesoftware.scaffold.datamodel. Search Engine Scoring Scheme file
+#Flushing Peptide Group file
+Flushed P2PMap in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing P2 P Map file
+#Flushing Peptides That Identify Proteins file
+#Flushing Protein Identification file
+#Flushing Database Search file
+#Flushing com.proteomesoftware.scaffold.datamodel. Storable Database Search Parameters file
+#Flushing Identification Cache Lookup file
+#Flushing Modification Locations file
+Flushed BBLowEnergyPeaks in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Low Energy Peaks file
+#Flushing Spectrum Analysis file
+Flushed BBPep3DPeakList in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Pep3 D Peak List file
+#Flushing Peak List file
+#Flushing Protein Node Connections file
+#Flushing Modification Type Ids file
+#Flushing Peptide Identification file
+#Flushing Peak List Mass Intensities file
+#Flushing Storable Protein Name file
+#Flushing Spectrum Name file
+#Flushing Protein Lynx Annotated Ions file
+#Flushing com.proteomesoftware.scaffold.datamodel. Input File Set file
+#Flushing Storable Accession Number file
+#Flushing com.proteomesoftware.scaffold.datamodel. Biological Sample file
+#Flushing Protein Analysis I Ds file
+Flushed BBProteinSequence in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Protein Sequence file
+#Flushing Peptide Sequence file
+#Flushing Modification Types file
+#Flushing Spectrum Analysis file
+#Flushing Experiment file
+#Flushing overflow caches
+#Flushing extra Spectrum Group file
+#Flushing extra Peptide Overflow file
+#Flushing extra Peptide Group file
+#Flushing extra Peptides That Identify Proteins file
+#Flushing extra Modification Locations file
+#Flushing extra Protein Node Connections file
+#Flushing extra Modification Type Ids file
+#Flushing extra Peak List Mass Intensities file
+#Flushing extra Storable Protein Name file
+#Flushing extra Spectrum Name file
+#Flushing extra Storable Accession Number file
+#Flushing extra Protein Analysis I Ds file
+#Flushing extra Peptide Sequence file
+#Building cache
+%86.8%
+#Finished loading data
+#writing file type: .sf3
+#Flushing write caches
+#Flushing Spectrum Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Protein Experiment Group file
+#Flushing com.proteomesoftware.scaffold.datamodel. Tandem Mass Spectrometry Sample file
+Flushed ProteinGroup in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing Protein Group file
+#Flushing Peptide Identification file
+Flushed BBSequenceMatch in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Sequence Match file
+#Flushing Peptide Overflow file
+#Flushing Spectrum Identification Cache file
+#Flushing High Energy Peak List File file
+#Flushing Spectrum file
+Flushed SpectrumCollation in 94.0ms of which 0.0ms spent writing and 94.0ms was spent compressing.
+#Flushing Spectrum Collation file
+%86.9%
+#Flushing com.proteomesoftware.scaffold.datamodel. Search Engine Scoring Scheme file
+#Flushing Peptide Group file
+Flushed P2PMap in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing P2 P Map file
+#Flushing Peptides That Identify Proteins file
+#Flushing Protein Identification file
+%87.02%
+#Flushing Database Search file
+#Flushing com.proteomesoftware.scaffold.datamodel. Storable Database Search Parameters file
+#Flushing Identification Cache Lookup file
+#Flushing Modification Locations file
+Flushed BBLowEnergyPeaks in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Low Energy Peaks file
+%87.15%
+#Flushing Spectrum Analysis file
+Flushed BBPep3DPeakList in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Pep3 D Peak List file
+#Flushing Peak List file
+#Flushing Protein Node Connections file
+#Flushing Modification Type Ids file
+%87.27%
+#Flushing Peptide Identification file
+#Flushing Peak List Mass Intensities file
+#Flushing Storable Protein Name file
+#Flushing Spectrum Name file
+#Flushing Protein Lynx Annotated Ions file
+%87.4%
+#Flushing com.proteomesoftware.scaffold.datamodel. Input File Set file
+#Flushing Storable Accession Number file
+#Flushing com.proteomesoftware.scaffold.datamodel. Biological Sample file
+#Flushing Protein Analysis I Ds file
+Flushed BBProteinSequence in 0.0ms of which 0.0ms spent writing and 0.0ms was spent compressing.
+#Flushing B B Protein Sequence file
+%87.52%
+#Flushing Peptide Sequence file
+#Flushing Modification Types file
+#Flushing Spectrum Analysis file
+#Flushing Experiment file
+#Flushing overflow caches
+#Flushing extra Spectrum Group file
+%87.63%
+#Flushing extra Peptide Overflow file
+#Flushing extra Peptide Group file
+#Flushing extra Peptides That Identify Proteins file
+#Flushing extra Modification Locations file
+#Flushing extra Protein Node Connections file
+#Flushing extra Modification Type Ids file
+#Flushing extra Peak List Mass Intensities file
+#Flushing extra Storable Protein Name file
+%87.73%
+#Flushing extra Spectrum Name file
+#Flushing extra Storable Accession Number file
+#Flushing extra Protein Analysis I Ds file
+#Flushing extra Peptide Sequence file
+#Writing...
+%87.85%
+%87.97%
+%88.09%
+%88.21%
+%88.33%
+%88.45%
+%88.57%
+%88.69%
+%88.81%
+#
+%88.95%
+#Saving Complete
+#writing file type: .protxml
+%91.3%
+#Scaffold Batch Analysis Complete!
+100% FINISHED! (success) Scaffold Batch Analysis Complete!
