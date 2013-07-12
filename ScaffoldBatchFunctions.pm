@@ -174,6 +174,7 @@ sub downloadFastaFile() {
 	  
 	print OUT $content;
 	close OUT;
+	
 }
 
 ### create scaffold xml driver
@@ -296,7 +297,7 @@ sub getEmailNotificationMsg {
 
 	my $msg = <<END;
 Scaffold Batch Task $taskName has finished.
-Scaffold result files is available at: 
+Scaffold results are available at: 
 $scaffoldResultsPath
 
 Mascot Search Results are available at:

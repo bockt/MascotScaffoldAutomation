@@ -65,7 +65,7 @@ print "EXTRACTED FASTA FILE PATH ON MASCOT SERVER\n";
 ### GET FASTA FILE PATH FROM .DAT FILE END
 
 ### DOWNLOAD FASTA FILE
-my $downloadFastaFilePath = File::Spec->catfile($tmpDir,$taskName.".fasta" ) ;
+my $downloadFastaFilePath = File::Spec->catfile($tmpDir,basename($fastaMSFilePath)) ;
 &ScaffoldBatchFunctions::downloadFastaFile($fastaMSFilePath,$downloadFastaFilePath,$taskName,$LOGFILE);
 &SimpleLogger::log($LOGFILE,0,"DOWNLOADED .FASTA FILE $downloadFastaFilePath",$taskName); ### log
 print "DOWNLOADED FASTA FILE $downloadFastaFilePath\n";

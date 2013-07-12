@@ -68,11 +68,14 @@ sub testGetFastaFilePath(){
 }
 
 sub testDownloadFastaFile(){
-	my $downloadFastaFilePath = File::Spec->catfile($TMPDIR,$TASKNAME.".fasta" ) ;
+	
 	my $fastaMSFilePath =  "SP_MOUSE_NRX/current/uniprot_sprot_v57.12.MOUSE.plus_NRX1-3d_AS6_corr.decoy.fasta";
-	my $ret = &ScaffoldBatchFunctions::downloadFastaFile($fastaMSFilePath,$downloadFastaFilePath,$TASKNAME,$LOGFILE);
+	my $downloadFastaFilePath = File::Spec->catfile($TMPDIR,basename($fastaMSFilePath)) ;
+	&ScaffoldBatchFunctions::downloadFastaFile($fastaMSFilePath,$downloadFastaFilePath,$TASKNAME,$LOGFILE);
 	print STDERR "testDownloadFastaFile: FAIL \n" unless(-e $downloadFastaFilePath);
 	print "testDownloadFastaFile PASS \n";
+	
+	
 }
 
 sub testCreateXMLScaffoldDriver(){
