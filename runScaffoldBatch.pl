@@ -8,6 +8,7 @@ use File::Basename;
 use File::Spec;
 use LWP::Simple;
 use Data::Dumper;
+use Config::Simple;
 
 ##############################################################################
 #                                                 
@@ -34,6 +35,8 @@ my $MASCOTSERVERURL = $config{MASCOTSERVERURL};
 my $MASCOTWEBUSERNAME = $config{MASCOTWEBUSERNAME};
 my $MASCOTWEBPASSWORD = $config{MASCOTWEBPASSWORD};
 my $NOTFICATIONEMAILADRTEST = $config{NOTFICATIONEMAILADRTEST};
+
+print Dumper %config;
 
 # set tmp directory path
 my $TMPDIR =  File::Spec->catfile( $SCRIPTDIR, "tmp");
