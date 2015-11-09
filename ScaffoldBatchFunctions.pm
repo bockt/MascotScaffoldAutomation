@@ -1,10 +1,14 @@
 package ScaffoldBatchFunctions;
 
 use strict;
+
+### WRITTEN BY erik.ahrne@unibas.ch
+
 use LWP::Simple 'get';
-use File::Basename 'basename';
+use File::Basename;
 use XML::Simple;
 use MIME::Lite;
+use File::Copy;
 
 sub readDatFileList() {
 
@@ -33,11 +37,7 @@ sub readDatFileList() {
 ### download (filtered) .dat file from MascotServer via http
 sub downloadDATFile() {
 
-	my ( $datFileURL, $outputPath, $taskName, $logFile ) = @_;
-
-	### HARD CODED PARAMETERS
-	my $username = "Erik";
-	my $password = "fmttm1234";
+	my ( $datFileURL, $outputPath, $taskName,$username,$password, $logFile ) = @_;
 
 	#program variables
 	my (
@@ -80,17 +80,17 @@ s/display=nothing&onerrdisplay=nothing&action=issecuritydisabled/display=nothing
 
 		$URL = "$securityPath";
 
-		#print $URL;
-
 		#Run the command
-		unless ( defined( $securityResponse = get $URL) ) {
+		unless ( defined( $securityResponse = get $URL)) {
 			print $securityResponse;
 			die "could not get $securityResponse\n";
 		}
 
-		# print $securityResponse;
-		#sessionID=richard_1578932794864131
 		($sessionID) = ( $securityResponse =~ /sessionID=(\w+_\d+)/ );
+
+		unless (defined($sessionID)) {
+			die "Could not get Mascot sessionId\n";
+		}
 
 		$sessionID = "&sessionID=" . $sessionID;
 	}
@@ -160,7 +160,7 @@ sub getFastaFilePath() {
 ### Download fasta file using getFasta.pl cgi script on mascot server
 sub downloadFastaFile() {
 
-	my ( $fastaMSFilePath, $downloadFastaFilePath, $taskName, $logFile ) = @_;
+	my ( $fastaMSFilePath, $downloadFastaFilePath, $mascotServerURL, $taskName, $logFile ) = @_;
 
 	open OUT, ">$downloadFastaFilePath"
 	  || (
@@ -169,12 +169,16 @@ sub downloadFastaFile() {
 		&& die("Can't open $downloadFastaFilePath")
 	  );
 	
-	my $content  = get "http://mascot.biozentrum.unibas.ch/mascot/cgi/getFasta.pl?fasta=$fastaMSFilePath";
-	$content =~ s/\r//g;  ### remove windows line break. Not compatible with Scaffold.
-	  
-	print OUT $content;
-	close OUT;
-	
+	my $content = get $mascotServerURL.'/mascot/cgi/getFasta.pl?fasta='.$fastaMSFilePath;
+
+	if(defined $content){
+		$content =~ s/\r//g;  ### remove windows line break. Not compatible with Scaffold.
+		print OUT $content;
+		close OUT;
+		return(1);
+	}else{ # fail
+		return(0);
+	}
 }
 
 ### create scaffold xml driver
@@ -185,8 +189,15 @@ sub createXMLScaffoldDriver() {
 	  = @_;
 
 	my $outpathSfd = File::Spec->catfile( $outPutDirPath, $taskName . ".sf3" );
-	my $outpathXML =
-	  File::Spec->catfile( $outPutDirPath, $taskName . ".prot.xml" );
+	#my $outpathXML =
+	#  File::Spec->catfile( $outPutDirPath, $taskName . ".prot.xml" );
+	#my $outpathMzIdentML =
+	#  File::Spec->catfile( $outPutDirPath, $taskName . ".mzid" );
+	  
+#	my $outpathMzIdentML =
+#	  File::Spec->catfile( $outPutDirPath, $taskName . "_PRIDE" );  
+	  
+	
 	my $databaseName = "foo";
 
 	my $scaffoldDriverHash = {
@@ -195,38 +206,57 @@ sub createXMLScaffoldDriver() {
 		Experiment => [
 			{
 				name           => $taskName,
+#				useIndependentSampleGrouping => "true",
+				useFamilyProteinGrouping => "false",
+				highMassAccuracyScoring => "false",
+				use3xScoring => "false",
+				
 				AFastaDatabase => {
 					id                       => $databaseName,
 					path                     => $fastaFilePath,
 					decoyProteinRegEx        => "REV_",
 					databaseAccessionRegEx   => ">([^ ]*)",
 					databaseDescriptionRegEx => ">[^ ]*[ ](.*)",
-					name 					=>"Generic" 
+					name 					=> "Generic", 
+				
 				},
 				DisplayThresholds => {
-					name                => "DTs",
+					name                => "Batch", ### Name of my set of thresholds
 					id                  => "thresh",
-					proteinProbability  => "0.95",
+					proteinProbability  => "0.9",
 					minimumPeptideCount => "2",
-					peptideProbability  => "0.95"
+					peptideProbability  => "0.2"
 				},
-				Export => [
+				Export => [ 
 					{
 						type       => "sf3",
 						thresholds => "thresh",
 						path       => $outpathSfd
 					},
-					{
-						type       => "protxml",
-						thresholds => "thresh",
-						path       => $outpathXML
-					},
+#					{
+#						type       => "protxml",
+#						thresholds => "thresh",
+#						path       => $outpathXML
+#					},
+#					{ ### useful for pride submissions
+#						type       => "mzIdentML",
+#						thresholds => "thresh",
+#						version    =>"1.1.0",
+#						showDecoys =>"false",
+#						useFilter  =>"true",
+#						individualReports  =>"true",
+#						useGzip    =>"false",
+#						writePeaklists  =>"true",
+#						path       => $outpathMzIdentML,
+#						threshold  =>"thresh"
+#					},
+
 				],
 			}
 		]
 	};
 
-	my $c = 1;
+	#my $c = 1;
 	foreach my $datFilePath (keys %$datFilePaths_href) {
 		
 		my $sampleLabel = $datFilePaths_href ->{$datFilePath}; ### @TODO sample label as given in SampleQueuer (should be part of the file name) 
@@ -239,10 +269,11 @@ sub createXMLScaffoldDriver() {
 			{
 				database  => $databaseName,
 				InputFile => [$datFilePath],
-				name      =>  $sampleLabel. "_$c"
+				#name      =>  $sampleLabel. "_$c"
+				name      =>  $sampleLabel
 			}
 		);  
-		$c++;
+		#$c++;
 	}
 
 	### convert hash to xml and pritn to file
@@ -271,6 +302,10 @@ sub runScaffold() {
 		$scaffoldErrorLogFile, $taskName, $logFile )
 	  = @_;
 
+	# hack
+	#"\"C:\\Program Files\\Scaffold4\\ScaffoldBatch4.exe\""
+	$scaffoldBatchPath =  '"'.$scaffoldBatchPath.'"';
+	
 	### cmd line
 	my $sysCmd =
 "$scaffoldBatchPath -f \"$scaffoldDriverFilePath\" >\"$scaffoldProgressLogFile\" 2>\"$scaffoldErrorLogFile\"";
@@ -295,12 +330,14 @@ sub getEmailNotificationMsg {
 	my ( $taskName, $scaffoldResultsPath, $mascotDatFileURLs_href ) = @_;
 	my $mascotFilesMsg = join( "\n", keys %$mascotDatFileURLs_href );
 
+	$scaffoldResultsPath = File::Spec->catfile($scaffoldResultsPath,"$taskName.sf3");
+
 	my $msg = <<END;
 Scaffold Batch Task $taskName has finished.
-Scaffold results are available at: 
+The Scaffold results file is available at: 
 $scaffoldResultsPath
 
-Mascot Search Results are available at:
+The Mascot Search Results are available at:
 $mascotFilesMsg
 	
 Enjoy!
@@ -314,11 +351,11 @@ END
 ### send notification e-mail
 sub sendEmailNotification() {
 
-	my ( $emailToAdr, $emailFromAdr, $msgHeader, $msg, $taskName, $logFile ) =
+	my ( $emailToAdr, $emailFromAdr,$serverName, $msgHeader, $msg, $taskName, $logFile ) =
 	  @_;
 
 	# Set this variable to your smtp server name
-	my $ServerName = "smtp.unibas.ch";
+	#my $ServerName = "smtp.unibas.ch";
 
 	my $from_address = $emailFromAdr;
 	my $to_address   = $emailToAdr;
@@ -340,7 +377,7 @@ sub sendEmailNotification() {
 		&& die("Failed to send notifications e-mail $!\n")
 	  );
 
-	MIME::Lite->send( 'smtp', $ServerName );
+	MIME::Lite->send( 'smtp', $serverName );
 	my $status = $mime_msg->send()
 	  or (
 		&SimpleLogger::log( $logFile, 2, "Failed to send notifications e-mail",
@@ -350,4 +387,42 @@ sub sendEmailNotification() {
 	return ($status);
 }
 
+## copy results file to e.g. network drive @TODO currently only .sf3 file is copied
+sub copyResultsFile{
+	
+	my ($toDir,$tmpDir ,$taskName ,$logFile) = @_;
+	
+	my $fromPath=File::Spec->catfile($tmpDir,"$taskName.sf3");
+	my $toPath=File::Spec->catfile($toDir,"$taskName.sf3");
+		
+	my $status = safeCopy($fromPath,$toPath);
+	if ( $status != 1 ) {
+		my $msg = "Failed to run system copy $fromPath to $toPath";
+		&SimpleLogger::log( $logFile, 2, $msg, $taskName );
+		die( $msg . "\n" );
+	}
+	
+}
+
+### file in copy is assigned tmp file name at destination and renamed to its origninal name upon copy complete
+sub safeCopy(){
+	my ($from,$to) = @_;
+	
+	my $toTmp = File::Spec->catfile(dirname($to),basename($to).'.tmp');
+	
+	my $status1 = copy($from,$toTmp);
+	if($status1 < 1){
+		return($status1);
+	}
+	
+	my $status2 = move($toTmp,$to);
+	if($status2 < 1){
+		return($status2);
+	}
+	
+	return(1);
+	
+}
+
 return (1);
+  

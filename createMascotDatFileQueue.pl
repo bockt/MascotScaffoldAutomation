@@ -1,5 +1,8 @@
 #!/usr/bin/perl -w
 use strict;
+
+### WRITTEN BY erik.ahrne@unibas.ch
+
 use File::Basename;
 use File::Spec;
 
@@ -24,6 +27,7 @@ my $resultURL;
 my $taskName;
 my $dataFilePath;
 
+### check number of arguments
 if(scalar(@ARGV) >= 3){
 	$resultURL = shift @ARGV;
 	$dataFilePath = shift @ARGV;
@@ -33,6 +37,13 @@ if(scalar(@ARGV) >= 3){
 	### log error
 	&SimpleLogger::log($LOGFILE,2,"Task name not specified. @ARGV",File::Spec->abs2rel($0));
 	die("Task name not specified. @ARGV")
+}
+
+### if mascot search fails the no resulturl returned 
+if($resultURL =~ /\<resulturl\>/){
+	my $errorMsg = "Invalid Mascot results url,  $resultURL";
+	&SimpleLogger::log($LOGFILE,2,$errorMsg,File::Spec->abs2rel($0));
+	die($errorMsg)
 }
 
 my $datListFile = File::Spec->catfile( $scriptDir, "tmp",$taskName.".txt" );

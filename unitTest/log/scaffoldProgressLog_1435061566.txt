@@ -1,0 +1,7 @@
+[14:12:52] Allowable biological sample converter children: FastaDatabaseConverter
+[14:12:52] Allowable biological sample converter children: TandemMassSpectrometrySampleConverter
+[14:12:52] Allowable biological sample converter children: ModificationConverter
+[14:12:52] Allowable biological sample converter children: InputFileConverter
+[14:12:52] Allowable biological sample converter children: b
+[14:12:53] C:\ProgramData\Proteome Software\Scaffold4\registeredKey.lkeynew
+[14:12:53] quiet license dialog check

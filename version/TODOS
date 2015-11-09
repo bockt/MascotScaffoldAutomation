@@ -1,0 +1,2 @@
+Change function getFastaFilePath.
+Very slow on large .dat files

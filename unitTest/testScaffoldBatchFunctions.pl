@@ -5,15 +5,29 @@ use File::Spec;
 use LWP::Simple;
 use Data::Dumper;
 use File::Find;
+use Config::Simple;
 
 require("../ScaffoldBatchFunctions.pm");
 require("../SimpleLogger.pm");
 
-
 ### INIT
 # get script directory
 my $SCRIPTDIR = dirname(__FILE__);
-	### HARD CODED PARMS
+
+### read config file
+my %config;
+Config::Simple->import_from(File::Spec->catfile( $SCRIPTDIR,"etc","msa.ini"), \%config)
+    or die Config::Simple->error();
+
+my $OUTPUTDIR = $config{OUTPUTDIR};
+my $SCAFFOLDBATCHPATH = $config{SCAFFOLDBATCHPATH};
+my $SMTPSERVERNAME = $config{SMTPSERVERNAME};
+my $NOTFICATIONEMAILSENDERADR = $config{NOTFICATIONEMAILSENDERADR};
+my $MASCOTSERVERURL = $config{MASCOTSERVERURL};
+my $MASCOTWEBUSERNAME = $config{MASCOTWEBUSERNAME};
+my $MASCOTWEBPASSWORD = $config{MASCOTWEBPASSWORD};
+my $NOTFICATIONEMAILADRTEST = $config{NOTFICATIONEMAILADRTEST};
+
 # set tmp directory path
 my $TMPDIR =  File::Spec->catfile( $SCRIPTDIR,"tmp");
 # set log file path 
@@ -36,69 +50,80 @@ foreach (@files){unlink $_;}
 ### INIT END
 
 ### run tests
-#&testReadDatFileList();
-#&testDownloadDATFile();
-#&testGetFastaFilePath();
-&testDownloadFastaFile();
-#&testCreateXMLScaffoldDriver();
-#&testRunScaffold();
-#&testSendEmailNotification();
+&testReadDatFileList();
+&testDownloadDATFile();  # server specific test
+&testGetFastaFilePath();
+&testDownloadFastaFile(); # server specific test
+&testCreateXMLScaffoldDriver();
+&testRunScaffold(); # scaffold batch installation specific
+&testSendEmailNotification();
+&testCopyResultsFile(); 
 
 ###### UNIT TESTS
 sub testReadDatFileList(){
+	
+	print " --- testReadDatFileList \n";
 	my $ret = &ScaffoldBatchFunctions::readDatFileList($DATLISTFILE, $LOGFILE);
 	print Dumper $ret;
-	print STDERR "testReadDatFileList: FAIL \n" unless(scalar keys %$ret == 2 );
+	die("testReadDatFileList: FAIL \n") unless(scalar keys %$ret == 2 );
 	print "testReadDatFileList PASS \n";
 }
 
 sub  testDownloadDATFile (){
-	my $datFileURL = 'http://mascot.biozentrum.unibas.ch/mascot/cgi/master_results.pl?file=../data/20130625/F015100.dat';
-	print "\ttestDownloadDATFile: ".&ScaffoldBatchFunctions::downloadDATFile($datFileURL,$TMPDIR,$TASKNAME, $LOGFILE)."\n";
-	print STDERR "testDownloadDATFile: FAIL " unless(-e File::Spec->catfile( "tmp","F015100.dat" ));  
+	
+	print " --- testDownloadDATFile \n";
+	my $datFileURL = 'http://mascot.biozentrum.unibas.ch/mascot/cgi/master_results.pl?file=../data/20151109/F028923.dat'; # server specific
+	print "\ttestDownloadDATFile: ".&ScaffoldBatchFunctions::downloadDATFile($datFileURL,$TMPDIR,$TASKNAME,$MASCOTWEBUSERNAME,$MASCOTWEBPASSWORD, $LOGFILE)."\n";
+	die("testDownloadDATFile: FAIL ") unless(-e File::Spec->catfile( "tmp","F028923.dat" ));
 	print "testDownloadDATFile PASS \n";
+	
 }
 
-
 sub testGetFastaFilePath(){
+	
+	print " --- testGetFastaFilePath \n";
 	my $ret = &ScaffoldBatchFunctions::getFastaFilePath($DATFILE,$TASKNAME,$LOGFILE);
 	print "\ttestGetFastaFilePath: $ret\n";
-	print STDERR "testGetFastaFilePath: FAIL \n" unless($ret =~ /uniprot_sprot_v57.12.MOUSE.plus_NRX1-3d_AS6_corr.decoy.fasta/);
+	die("testGetFastaFilePath: FAIL \n") unless($ret =~ /uniprot_sprot_v57.12.MOUSE.plus_NRX1-3d_AS6_corr.decoy.fasta/);
 	print "testGetFastaFilePath PASS \n";
 }
 
-sub testDownloadFastaFile(){
+sub testDownloadFastaFile(){  # server specific
 	
-	my $fastaMSFilePath =  "SP_MOUSE_NRX/current/uniprot_sprot_v57.12.MOUSE.plus_NRX1-3d_AS6_corr.decoy.fasta";
-	my $downloadFastaFilePath = File::Spec->catfile($TMPDIR,basename($fastaMSFilePath)) ;
-	&ScaffoldBatchFunctions::downloadFastaFile($fastaMSFilePath,$downloadFastaFilePath,$TASKNAME,$LOGFILE);
-	print STDERR "testDownloadFastaFile: FAIL \n" unless(-e $downloadFastaFilePath);
+	print " --- testDownloadFastaFile \n";
+	my $fastaMSFilePath =  "SP_MOUSE_NRX/current/uniprot_sprot_v57.12.MOUSE.plus_NRX1-3d_AS6_corr.decoy.fasta"; 
+	my $downloadFastaFilePath = File::Spec->catfile($TMPDIR,basename($fastaMSFilePath));
+	
+	die("testDownloadFastaFile: FAIL") unless(&ScaffoldBatchFunctions::downloadFastaFile($fastaMSFilePath,$downloadFastaFilePath,$MASCOTSERVERURL,$TASKNAME,$LOGFILE));
 	print "testDownloadFastaFile PASS \n";
-	
-	
+
 }
 
 sub testCreateXMLScaffoldDriver(){
+	
+	print " --- testCreateXMLScaffoldDriver \n";
 	my $scaffoldDriverFilePath = File::Spec->catfile($TMPDIR,"driver.xml");
 	my $fastaFilePath = "c:\\dev\\perl\\workspace\\MascotScaffoldAutomation\\unitTest\\testData\\test_Task.fasta";	
 
 	&ScaffoldBatchFunctions::createXMLScaffoldDriver($scaffoldDriverFilePath, $fastaFilePath, \%DATFILEPATHS,$TMPDIR, $TASKNAME,$LOGFILE);
-	print STDERR "testCreateXMLScaffoldDriver: FAIL \n" unless(-e $scaffoldDriverFilePath);
+	die"testCreateXMLScaffoldDriver: FAIL \n" unless(-e $scaffoldDriverFilePath);
 	print "testCreateXMLScaffoldDriver PASS \n";
 }
-
-sub testRunScaffold(){
+ 
+sub testRunScaffold(){ # scaffold batch installation specific
 	
-	my $sscaffoldBatchPath = "\"C:\\Program Files\\Scaffold4\\ScaffoldBatch4.exe\"";
+	print " --- testRunScaffold \n";
 	my $scaffoldDriverFilePath = File::Spec->catfile( $TMPDIR,"driver.xml");
-	my $scaffoldProgressLogFile =  File::Spec->catfile( $SCRIPTDIR, "log","scaffoldProgressLog.txt");
-	my $scaffoldErrorLogFile =  File::Spec->catfile( $SCRIPTDIR, "log","scaffoldErrorLog.txt");
+	#my $scaffoldProgressLogFile =  File::Spec->catfile( $SCRIPTDIR, "log","scaffoldProgressLog.txt");
+	#my $scaffoldErrorLogFile =  File::Spec->catfile( $SCRIPTDIR, "log","scaffoldErrorLog.txt");
 
-
-	&ScaffoldBatchFunctions::runScaffold($sscaffoldBatchPath,$scaffoldDriverFilePath,$scaffoldProgressLogFile,$scaffoldErrorLogFile,$TASKNAME,$LOGFILE);
+	my $scaffoldProgressLogFile =  File::Spec->catfile( $SCRIPTDIR, "log","scaffoldProgressLog_".time."\.txt");
+	my $scaffoldErrorLogFile =  File::Spec->catfile( $SCRIPTDIR, "log","scaffoldErrorLog_".time."\.txt");
 	
-	print STDERR "testRunScaffold: FAIL \n" unless(-e File::Spec->catfile( $TMPDIR,"test_Task.sfd"));
-	print STDERR "testRunScaffold: FAIL \n" unless(-e File::Spec->catfile( $TMPDIR,"test_Task.prot.xml"));
+	&ScaffoldBatchFunctions::runScaffold($SCAFFOLDBATCHPATH,$scaffoldDriverFilePath,$scaffoldProgressLogFile,$scaffoldErrorLogFile,$TASKNAME,$LOGFILE);
+	
+	die("testRunScaffold: FAIL \n") unless(-e File::Spec->catfile( $TMPDIR,"test_Task.sf3"));
+	#print STDERR "testRunScaffold: FAIL \n" unless(-e File::Spec->catfile( $TMPDIR,"test_Task.prot.xml"));
 
 	print "testRunScaffold PASS \n";		
 }
@@ -106,27 +131,29 @@ sub testRunScaffold(){
 
 sub testSendEmailNotification(){
 	
+	print " --- testSendEmailNotification \n";
 	my $resultsPath = "where/are/my/results";
 	my $msg = &ScaffoldBatchFunctions::getEmailNotificationMsg($TASKNAME,$resultsPath,\%DATFILEPATHS
 	 );
 
 	print "testSendEmailNotification $msg\n";
-	my $notficatioEmailAdr = 'erik.ahrne@unibas.ch';
-	my $ret = &ScaffoldBatchFunctions::sendEmailNotification($notficatioEmailAdr,'erik.ahrne@unibas.ch',	'Scaffold Batch Task Completed',$msg,$TASKNAME,$LOGFILE);
-	print STDERR "testSendEmailNotification: FAIL \n" unless($ret);	
-	print "testSendEmailNotification PASS \n";
+	my $ret = &ScaffoldBatchFunctions::sendEmailNotification($NOTFICATIONEMAILADRTEST,$NOTFICATIONEMAILSENDERADR,$SMTPSERVERNAME,'Scaffold Batch Task Completed',$msg,$TASKNAME,$LOGFILE);
+	die("testSendEmailNotification FAIL \n" ) unless($ret);
 
 }
 
 
-
-
-
-
-
-
-
+sub testCopyResultsFile{
 	
+	print " --- testCopyResultsFile \n";
+	my $toPath = "tmp/";
+	my $fromPath = "testData/";
+	
+	&ScaffoldBatchFunctions::copyResultsFile($toPath,"$fromPath","to_be_deleted",$LOGFILE);
+	die("testCopyResultsFile FAIL" ) unless(-e "tmp/to_be_deleted.sf3" ) ; 
+	print "testCopyResultsFile PASS \n"; 
+}
+
 
 exit(0);
 

@@ -1,0 +1,8 @@
+OUTPUTDIR path_to_dir_where_scaffold_files_is_copied 
+SCAFFOLDBATCHPATH C:\\Program Files\\Scaffold4\\ScaffoldBatch4.exe
+SMTPSERVERNAME smtp.gmail.com
+NOTFICATIONEMAILSENDERADR sender@gmail.com
+MASCOTSERVERURL http://mascot.somewhere.ch/mascot/cgi/login.pl
+MASCOTWEBUSERNAME sender
+MASCOTWEBPASSWORD letmein
+NOTFICATIONEMAILADRTEST reciever@gmail.com
