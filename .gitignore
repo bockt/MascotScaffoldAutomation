@@ -4,6 +4,10 @@
 *.tsv
 *.csv
 *.txt
+*.TXT
+*.exe
+*.bat
+
 # OS generated files #
 ######################
 .DS_Store
