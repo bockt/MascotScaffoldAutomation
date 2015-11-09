@@ -1,3 +1,0 @@
-Wed Jul 29 15:43:32 2015	ERROR	Task name not specified. 	runScaffoldBatch.pl	
-Mon Nov  9 11:27:12 2015	INFO	CREATED/UPDATED /Users/ahrnee-adm/dev/perl/workspace/MascotScaffoldAutomation/tmp/Task.txt	Task	
-Mon Nov  9 11:27:35 2015	INFO	CREATED/UPDATED /Users/ahrnee-adm/dev/perl/workspace/MascotScaffoldAutomation/tmp/Task.txt	Task	

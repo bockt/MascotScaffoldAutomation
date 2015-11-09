@@ -1,2 +1,0 @@
-http://mascot.biozentrum.unibas.ch/mascot/cgi/master_results.pl?file=../data/20130625/F015100.dat	fileA.mgf
-http://mascot.biozentrum.unibas.ch/mascot/cgi/master_results.pl?file=../data/20130625/F015101.dat	fileB.mgf
