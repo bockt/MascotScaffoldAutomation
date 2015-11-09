@@ -24,7 +24,7 @@ After Completing Task
 - MIME::Lite
 - Config::Simple
 
-![https://github.com/eahrne/MascotScaffoldAutomation/blob/master/docs/Mascot_Daemon_External_Process.PNG]()
+![](https://github.com/eahrne/MascotScaffoldAutomation/blob/master/docs/Mascot_Daemon_External_Process.PNG)
 
 **Masot Daemon External Processes Configuration**
 
