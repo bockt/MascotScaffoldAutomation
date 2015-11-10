@@ -31,7 +31,7 @@ Mascot Daemon External Processes:
 
 see template file: ./MascotScaffoldAutomation/unitTest/etc/msa.param.example
 
-	OUTPUTDIR path_to_dir_where_scaffold_files_is_copied 
+	OUTPUTDIR path_to_dir_where_scaffold_file_will_be_copied 
 	SCAFFOLDBATCHPATH C:\\Program Files\\Scaffold4\\ScaffoldBatch4.exe
 	SMTPSERVERNAME smtp.gmail.com
 	NOTFICATIONEMAILSENDERADR sender@gmail.com
