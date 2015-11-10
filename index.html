@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mascot Scaffold Automation by eahrne</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Mascot Scaffold Automation</h1>
+        <p>Run Scaffold Batch from within Mascot Daemon. </p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/eahrne/MascotScaffoldAutomation" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/eahrne/MascotScaffoldAutomation/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/eahrne/MascotScaffoldAutomation/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>
+<a id="mascot-scaffold-automation" class="anchor" href="#mascot-scaffold-automation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mascot Scaffold Automation</h2>
+
+<p>Run Scaffold Batch from within Mascot Daemon.  </p>
+
+<h3>
+<a id="synopsis" class="anchor" href="#synopsis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Synopsis</h3>
+
+<p>Mascot Daemon External Processes:</p>
+
+<p><strong>After each seach</strong></p>
+
+<ul>
+<li>Create Mascot Dat File Queue. The queue file is temporarily located in ./MascotScaffoldAutomation/tmp. The file name is given by the <em>task name</em>, as specified in Mascot Daemon  (spaces replaced by _).</li>
+</ul>
+
+<p><strong>After Completing Task</strong></p>
+
+<ul>
+<li>Read .dat file queue</li>
+<li>Download all .dat files</li>
+<li>Parse one .dat file and extract .fasta file path</li>
+<li>Download .fasta file</li>
+<li>Create Scaffold .xml driver</li>
+<li>Run scaffold</li>
+<li>Copy scaffold file (.sf3) to data storage drive</li>
+<li>Send job complete notification e-mail to user</li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Required Non-Standard Install Perl Modules: </p>
+
+<ul>
+<li>MIME::Lite</li>
+<li>Config::Simple</li>
+</ul>
+
+<p><strong>Create a confiuration file: ./MascotScaffoldAutomation/etc/msa.ini</strong></p>
+
+<p>see template file: ./MascotScaffoldAutomation/unitTest/etc/msa.param.example</p>
+
+<pre><code>OUTPUTDIR path_to_dir_where_scaffold_files_is_copied 
+SCAFFOLDBATCHPATH C:\\Program Files\\Scaffold4\\ScaffoldBatch4.exe
+SMTPSERVERNAME smtp.gmail.com
+NOTFICATIONEMAILSENDERADR sender@gmail.com
+MASCOTSERVERURL http://mascot.somewhere.ch/mascot/cgi/login.pl
+MASCOTWEBUSERNAME sender
+MASCOTWEBPASSWORD letmein
+NOTFICATIONEMAILADRTEST reciever@gmail.com
+</code></pre>
+
+<p><strong>Masot Daemon External Processes Configuration</strong></p>
+
+<p><img src="https://github.com/eahrne/MascotScaffoldAutomation/blob/master/docs/Mascot_Daemon_External_Process.PNG" alt=""></p>
+
+<p>After Search:</p>
+
+<pre><code>perl "C:\MSA\createMascotDatFileQueue.pl" "&lt;resulturl&gt;" "&lt;datafilepath&gt;" "&lt;taskname&gt;"
+</code></pre>
+
+<p>After Completing Task:</p>
+
+<pre><code>perl "C:\MSA\runScaffoldBatch.pl" "&lt;mascot_user_email&gt;" "&lt;taskname&gt;"
+</code></pre>
+
+<p><strong><a href="mailto:erik.ahrne@unibas.ch">questions?</a></strong></p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/eahrne">eahrne</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
