@@ -57,7 +57,7 @@ After Completing Task:
 
 	perl "C:\MSA\runScaffoldBatch.pl" "<mascot_user_email>" "<taskname>"
 
-<a href="url"><img src="https://raw.githubusercontent.com/eahrne/MascotScaffoldAutomation/master/docs/Mascot_Daemon_External_Process.PNG" align="left" height="500" width="900" ></a>
+<a href="url"><img src="https://raw.githubusercontent.com/eahrne/MascotScaffoldAutomation/master/docs/Mascot_Daemon_External_Process.PNG" align="left" height="450" width="850" ></a>
 
 
 
