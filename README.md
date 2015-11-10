@@ -4,12 +4,12 @@ Run Scaffold Batch from within Mascot Daemon.
 ### Synopsis
 Mascot Daemon External Processes:
 
-After each seach
+**After each seach**
 
-- Create Mascot Dat File Queue (queue file in tmp folder. File name given by task name (spaces replaced by _))
+- Create Mascot Dat File Queue. The queue file is temporarily located in ./MascotScaffoldAutomation/tmp. The file name is given by the *task name*, as specified in Mascot Daemon  (spaces replaced by _).
 
 
-After Completing Task
+**After Completing Task**
 
 - Read .dat file queue
 - Download all .dat files
@@ -52,3 +52,4 @@ After Completing Task:
 
 	perl "C:\MSA\runScaffoldBatch.pl" "<mascot_user_email>" "<taskname>"
 
+**[questions?](mailto:erik.ahrne@unibas.ch)**
