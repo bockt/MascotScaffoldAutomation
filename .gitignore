@@ -8,6 +8,7 @@
 *.exe
 *.bat
 *~lock.*
+*.index
 # OS generated files #
 ######################
 .DS_Store
