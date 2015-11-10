@@ -4,40 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Mascot Scaffold Automation by eahrne</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-
+    <div class="wrapper">
       <header>
         <h1>Mascot Scaffold Automation</h1>
         <p>Run Scaffold Batch from within Mascot Daemon. </p>
+
+        <p class="view"><a href="https://github.com/eahrne/MascotScaffoldAutomation">View the Project on GitHub <small>eahrne/MascotScaffoldAutomation</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/eahrne/MascotScaffoldAutomation/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/eahrne/MascotScaffoldAutomation/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/eahrne/MascotScaffoldAutomation">View On <strong>GitHub</strong></a></li>
+        </ul>
       </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/eahrne/MascotScaffoldAutomation" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/eahrne/MascotScaffoldAutomation/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/eahrne/MascotScaffoldAutomation/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
       <section>
         <h2>
 <a id="mascot-scaffold-automation" class="anchor" href="#mascot-scaffold-automation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mascot Scaffold Automation</h2>
@@ -71,7 +60,7 @@
 <h3>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<p>Required Non-Standard Install Perl Modules: </p>
+<p><strong>Required Non-Standard Install Perl Modules:</strong> </p>
 
 <ul>
 <li>MIME::Lite</li>
@@ -92,9 +81,14 @@ MASCOTWEBPASSWORD letmein
 NOTFICATIONEMAILADRTEST reciever@gmail.com
 </code></pre>
 
+<p><strong>Run unit-test</strong></p>
+
+<pre><code>perl ./MascotScaffoldAutomation/unitTest/testScaffoldBatchFunctions.pl
+</code></pre>
+
 <p><strong>Masot Daemon External Processes Configuration</strong></p>
 
-<p><img src="https://github.com/eahrne/MascotScaffoldAutomation/blob/master/docs/Mascot_Daemon_External_Process.PNG" alt=""></p>
+
 
 <p>After Search:</p>
 
@@ -106,14 +100,16 @@ NOTFICATIONEMAILADRTEST reciever@gmail.com
 <pre><code>perl "C:\MSA\runScaffoldBatch.pl" "&lt;mascot_user_email&gt;" "&lt;taskname&gt;"
 </code></pre>
 
+<p><a href="url"><img src="https://raw.githubusercontent.com/eahrne/MascotScaffoldAutomation/master/docs/Mascot_Daemon_External_Process.PNG" align="left" height="500" width="900"></a></p>
+
 <p><strong><a href="mailto:erik.ahrne@unibas.ch">questions?</a></strong></p>
       </section>
       <footer>
-        <p>Project maintained by <a href="https://github.com/eahrne">eahrne</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        <p>This project is maintained by <a href="https://github.com/eahrne">eahrne</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
