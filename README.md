@@ -22,7 +22,7 @@ Mascot Daemon External Processes:
 		
 ### Installation
 
-Required Non-Standard Install Perl Modules: 
+**Required Non-Standard Install Perl Modules:** 
 
 - MIME::Lite
 - Config::Simple
@@ -40,9 +40,14 @@ see template file: ./MascotScaffoldAutomation/unitTest/etc/msa.param.example
 	MASCOTWEBPASSWORD letmein
 	NOTFICATIONEMAILADRTEST reciever@gmail.com
 
+**Run unit-test**
+  
+	perl ./MascotScaffoldAutomation/unitTest/testScaffoldBatchFunctions.pl
+
 **Masot Daemon External Processes Configuration**
 
-![](https://github.com/eahrne/MascotScaffoldAutomation/blob/master/docs/Mascot_Daemon_External_Process.PNG)
+<!--![](https://raw.githubusercontent.com/eahrne/MascotScaffoldAutomation/master/docs/Mascot_Daemon_External_Process.PNG) -->
+
 
 After Search:
 
@@ -51,5 +56,9 @@ After Search:
 After Completing Task:
 
 	perl "C:\MSA\runScaffoldBatch.pl" "<mascot_user_email>" "<taskname>"
+
+<a href="url"><img src="https://raw.githubusercontent.com/eahrne/MascotScaffoldAutomation/master/docs/Mascot_Daemon_External_Process.PNG" align="left" height="500" width="900" ></a>
+
+
 
 **[questions?](mailto:erik.ahrne@unibas.ch)**

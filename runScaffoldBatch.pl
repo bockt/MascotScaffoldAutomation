@@ -36,7 +36,7 @@ my $MASCOTWEBUSERNAME = $config{MASCOTWEBUSERNAME};
 my $MASCOTWEBPASSWORD = $config{MASCOTWEBPASSWORD};
 my $NOTFICATIONEMAILADRTEST = $config{NOTFICATIONEMAILADRTEST};
 
-print Dumper %config;
+#print Dumper %config;
 
 # set tmp directory path
 my $TMPDIR =  File::Spec->catfile( $SCRIPTDIR, "tmp");

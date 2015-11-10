@@ -7,12 +7,16 @@ use Data::Dumper;
 use File::Find;
 use Config::Simple;
 
-require("../ScaffoldBatchFunctions.pm");
-require("../SimpleLogger.pm");
-
 ### INIT
+
 # get script directory
 my $SCRIPTDIR = dirname(__FILE__);
+
+# get base dir to load required modules
+my $BASEDIR = $SCRIPTDIR;
+$BASEDIR =~ s/unitTest$//;
+require(File::Spec->catfile( $BASEDIR,"ScaffoldBatchFunctions.pm"));
+require(File::Spec->catfile( $BASEDIR,"SimpleLogger.pm"));
 
 ### read config file
 my %config;
