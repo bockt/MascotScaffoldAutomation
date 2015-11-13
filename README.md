@@ -22,12 +22,12 @@ Mascot Daemon External Processes:
 		
 ### Installation
 
-**Required Non-Standard Install Perl Modules:** 
+**Required Non-Standard Perl Modules:** 
 
 - MIME::Lite
 - Config::Simple
 
-**Create a confiuration file: ./MascotScaffoldAutomation/etc/msa.ini**
+**Create a configuration file: ./MascotScaffoldAutomation/etc/msa.ini**
 
 see template file: ./MascotScaffoldAutomation/unitTest/etc/msa.param.example
 
